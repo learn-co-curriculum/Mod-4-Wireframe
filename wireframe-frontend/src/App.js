@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import { Button } from 'reactstrap';
-
+import Login from './containers/login'
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 
@@ -51,7 +51,7 @@ class App extends Component {
   }
 }
 
-const Login = () => <Button>Login</Button>
+// const Login = () => <Button>Login</Button>
 
 const Dash = () => <h1>Dash Page</h1>
 
