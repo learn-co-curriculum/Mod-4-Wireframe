@@ -1,5 +1,5 @@
-import React, { Component }, { Fragment } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 
 import fetch from 'isomorphic-fetch'
@@ -23,12 +23,42 @@ class App extends Component {
 
   render() {
     return (
+      <main>
       <Router>
-        <p>Data recieved from API: { this.state.data }</p>
+
+    <nav>
+      <ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/dash'>Dash</Link></li>
+        <li><Link to='/new'>New</Link></li>
+        <li><Link to='/edit'>Edit</Link></li>
+        
+      </ul>
+    </nav>
+    <Switch>
+        <Route exact path = '/' component = { Login } />
+        <Route exact path = '/dash' component = { Dash } />
+        <Route exact path = '/new' component = { New } />
+        <Route exact path = '/edit' component = { Edit } />
+        <Route exact path = '/show' component = { Show } />
+    </Switch>
       </Router>
+      </main>
+
 
     );
   }
 }
+
+const Login = () => <p>Login Page: Data recieved from API: </p>
+
+const Dash = () => <h1>Dash Page</h1>
+
+const  New = () => <h1>New Page</h1>
+
+const Edit = () => <h1>Edit Page</h1>
+
+const Show = () => <h1>Show Page</h1>
+
 
 export default App;
