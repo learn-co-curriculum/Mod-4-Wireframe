@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
+import { Button } from 'reactstrap';
 
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
@@ -32,7 +33,7 @@ class App extends Component {
         <li><Link to='/dash'>Dash</Link></li>
         <li><Link to='/new'>New</Link></li>
         <li><Link to='/edit'>Edit</Link></li>
-        
+
       </ul>
     </nav>
     <Switch>
@@ -50,7 +51,7 @@ class App extends Component {
   }
 }
 
-const Login = () => <p>Login Page: Data recieved from API: </p>
+const Login = () => <Button>Login</Button>
 
 const Dash = () => <h1>Dash Page</h1>
 
