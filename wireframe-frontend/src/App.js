@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component }, { Fragment } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
 import fetch from 'isomorphic-fetch'
@@ -22,7 +23,10 @@ class App extends Component {
 
   render() {
     return (
-      <p>Data recieved from API: { this.state.data }</p>
+      <Router>
+        <p>Data recieved from API: { this.state.data }</p>
+      </Router>
+
     );
   }
 }
