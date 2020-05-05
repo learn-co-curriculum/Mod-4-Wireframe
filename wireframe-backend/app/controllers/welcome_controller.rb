@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    render json: "Welcome to the API#{4 + 4}".to_json
+    to = Todo.all
+    render json: to.to_json
   end
 end
