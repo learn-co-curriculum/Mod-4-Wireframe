@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import '../App.css';
-import { Button } from 'reactstrap';
+import { Nav, NavItem, NavLink } from 'reactstrap';
+
 
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
@@ -12,15 +13,36 @@ export default class NavBar extends Component {
   }
   render(){
     return (
-      <nav>
-        <ul>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/dashboard'>Dashboard</Link></li>
-          <li><Link to='/new'>New</Link></li>
-          <li><Link to='/edit'>Edit</Link></li>
-          <li><Link to='/logout'>Logout</Link></li>
-        </ul>
-      </nav>
+     <Nav pills>
+      <NavItem>
+        <NavLink disabled href="#">FlatNote</NavLink>
+       </NavItem>
+       <NavItem>
+         <NavLink href="#">
+          <Link to='/'>Home</Link>
+         </NavLink>
+       </NavItem>
+       <NavItem>
+         <NavLink href="#">
+             <Link to='/dashboard'>Dashboard</Link>
+         </NavLink>
+       </NavItem>
+       <NavItem>
+         <NavLink href="#">
+             <Link to='/new'>New Note</Link>
+         </NavLink>
+       </NavItem>
+       <NavItem>
+         <NavLink href="#">
+             <Link to='/edit'>Edit Note</Link>
+         </NavLink>
+       </NavItem>
+       <NavItem>
+         <NavLink href="#">
+             <Link to='/logout'>Sign Out</Link>
+         </NavLink>
+       </NavItem>
+     </Nav>
     )
   }
 }
