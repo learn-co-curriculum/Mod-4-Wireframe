@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_many :Todos
+  has_many :notes
 end
