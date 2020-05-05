@@ -11,4 +11,10 @@ class Note < ApplicationRecord
   def add_tag(tag)
     TagNote.create(note: self.id ,tag: tag.id)
   end
+
+  def add_tags(tags)
+    tags.each do |tag|
+      self.add_tag(tag)
+    end
+  end
 end
