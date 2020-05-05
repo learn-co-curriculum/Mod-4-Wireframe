@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    to = Todo.all
-    render json: to.to_json
+
+    render json: Todo.all
   end
 end
