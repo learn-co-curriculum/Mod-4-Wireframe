@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import { Button } from 'reactstrap';
 import Login from './containers/login'
+import Dashboard from './containers/dashboard'
+import Show from './containers/show'
+import New from './containers/new'
+import Edit from './containers/edit'
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 
@@ -30,7 +34,7 @@ class App extends Component {
     <nav>
       <ul>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/dash'>Dash</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
         <li><Link to='/new'>New</Link></li>
         <li><Link to='/edit'>Edit</Link></li>
 
@@ -38,7 +42,7 @@ class App extends Component {
     </nav>
     <Switch>
         <Route exact path = '/' component = { Login } />
-        <Route exact path = '/dash' component = { Dash } />
+        <Route exact path = '/dashboard' component = { Dashboard } />
         <Route exact path = '/new' component = { New } />
         <Route exact path = '/edit' component = { Edit } />
         <Route exact path = '/show' component = { Show } />
@@ -53,13 +57,13 @@ class App extends Component {
 
 // const Login = () => <Button>Login</Button>
 
-const Dash = () => <h1>Dash Page</h1>
+// const Dashboard = () => <h1>Dash Page</h1>
 
-const  New = () => <h1>New Page</h1>
+// const  New = () => <h1>New Page</h1>
 
-const Edit = () => <h1>Edit Page</h1>
-
-const Show = () => <h1>Show Page</h1>
+// const Edit = () => <h1>Edit Page</h1>
+//
+// const Show = () => <h1>Show Page</h1>
 
 
 export default App;
