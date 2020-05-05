@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import '../App.css';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { FormGroup, Label, Input } from 'reactstrap';
 
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
@@ -22,17 +21,14 @@ export default class Dashboard extends Component {
   }
   renderNotes = () => {
     console.log(this.state.data);
+    return Array.from(this.state.data).map((datum,index) => <option key={index}>{datum.description}</option>)
   }
   render(){
     return (
       <FormGroup>
         <Label for="exampleSelectMulti">Select Multiple</Label>
         <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>{this.renderNotes()}</option>
+          {this.renderNotes()}
         </Input>
       </FormGroup>
       // <Button>Dashboard: {this.state.data}</Button>

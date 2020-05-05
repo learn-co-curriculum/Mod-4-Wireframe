@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../App.css';
-import { Nav, NavItem, NavLink, ButtonGroup, Button } from 'reactstrap';
+import { ButtonGroup, Button } from 'reactstrap';
 
-
-import fetch from 'isomorphic-fetch'
-import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 export default class NavBar extends Component {
   constructor(props){
@@ -22,7 +19,7 @@ export default class NavBar extends Component {
           <Button color="info"><Link to='/logout'>Sign Out</Link></Button>
        </ButtonGroup>
 
-    
+
      )
   }
 }
