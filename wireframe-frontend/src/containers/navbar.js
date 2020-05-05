@@ -6,13 +6,21 @@ import { Button } from 'reactstrap';
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 
-export default class Edit extends Component {
+export default class NavBar extends Component {
   constructor(props){
     super()
   }
   render(){
     return (
-      <Button>Edit</Button>
+      <nav>
+        <ul>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/dashboard'>Dashboard</Link></li>
+          <li><Link to='/new'>New</Link></li>
+          <li><Link to='/edit'>Edit</Link></li>
+          <li><Link to='/logout'>Logout</Link></li>
+        </ul>
+      </nav>
     )
   }
 }

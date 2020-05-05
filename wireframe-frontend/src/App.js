@@ -7,8 +7,7 @@ import Dashboard from './containers/dashboard'
 import Show from './containers/show'
 import New from './containers/new'
 import Edit from './containers/edit'
-import fetch from 'isomorphic-fetch'
-import runtimeEnv from '@mars/heroku-js-runtime-env'
+import NavBar from './containers/navbar'
 
 class App extends Component {
 
@@ -19,27 +18,13 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    const url = runtimeEnv().REACT_APP_API_URL
-    fetch(url)
-      .then( res => res.json() )
-      .then( json => this.setState({ data: json }) )
-  }
 
   render() {
     return (
       <main>
       <Router>
 
-    <nav>
-      <ul>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/dashboard'>Dashboard</Link></li>
-        <li><Link to='/new'>New</Link></li>
-        <li><Link to='/edit'>Edit</Link></li>
-
-      </ul>
-    </nav>
+      <NavBar />
     <Switch>
         <Route exact path = '/' component = { Login } />
         <Route exact path = '/dashboard' component = { Dashboard } />
