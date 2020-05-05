@@ -20,7 +20,9 @@ export default class Dashboard extends Component {
       .then( res => res.json() )
       .then( json => this.setState({ data: json }) )
   }
-
+  renderNotes = () => {
+    console.log(this.state.data);
+  }
   render(){
     return (
       <FormGroup>
@@ -30,7 +32,7 @@ export default class Dashboard extends Component {
           <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option>5</option>
+          <option>{this.renderNotes()}</option>
         </Input>
       </FormGroup>
       // <Button>Dashboard: {this.state.data}</Button>
