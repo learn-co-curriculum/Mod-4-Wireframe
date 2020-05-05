@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { FormGroup, Label, Input } from 'reactstrap';
+import ToDoItem from '../components/todoitem';
 
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
@@ -21,7 +22,8 @@ export default class Dashboard extends Component {
   }
   renderNotes = () => {
     console.log(this.state.data);
-    return Array.from(this.state.data).map((datum,index) => <option key={index}>{datum.description}</option>)
+    return Array.from(this.state.data).map((datum,index) =>
+              <ToDoItem key={index} datum={datum}/>)
   }
   render(){
     return (
