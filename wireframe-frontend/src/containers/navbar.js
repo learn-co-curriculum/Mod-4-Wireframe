@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import '../App.css';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, NavItem, NavLink, ButtonGroup, Button } from 'reactstrap';
 
 
 import fetch from 'isomorphic-fetch'
@@ -12,37 +12,17 @@ export default class NavBar extends Component {
     super()
   }
   render(){
-    return (
-     <Nav pills>
-      <NavItem>
-        <NavLink disabled href="#">FlatNote</NavLink>
-       </NavItem>
-       <NavItem>
-         <NavLink href="#">
-          <Link to='/'>Home</Link>
-         </NavLink>
-       </NavItem>
-       <NavItem>
-         <NavLink href="#">
-             <Link to='/dashboard'>Dashboard</Link>
-         </NavLink>
-       </NavItem>
-       <NavItem>
-         <NavLink href="#">
-             <Link to='/new'>New Note</Link>
-         </NavLink>
-       </NavItem>
-       <NavItem>
-         <NavLink href="#">
-             <Link to='/edit'>Edit Note</Link>
-         </NavLink>
-       </NavItem>
-       <NavItem>
-         <NavLink href="#">
-             <Link to='/logout'>Sign Out</Link>
-         </NavLink>
-       </NavItem>
-     </Nav>
-    )
+     return (
+       <ButtonGroup>
+          <Button>FlatNote</Button>
+          <Button color="info"><Link to='/'>Home</Link></Button>
+          <Button color="info"><Link to='/dashboard'>Dashboard</Link></Button>
+          <Button color="info"><Link to='/new'>New Note</Link></Button>
+          <Button color="info"><Link to='/edit'>Edit Note</Link></Button>
+          <Button color="info"><Link to='/logout'>Sign Out</Link></Button>
+       </ButtonGroup>
+
+    
+     )
   }
 }
