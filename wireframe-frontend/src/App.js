@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import { Button } from 'reactstrap';
 import Login from './containers/login'
 import Dashboard from './containers/dashboard'
 import Show from './containers/show'

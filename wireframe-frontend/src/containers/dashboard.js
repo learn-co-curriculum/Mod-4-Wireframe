@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import '../App.css';
-import { Button } from 'reactstrap';
+import { FormGroup, Label, Input } from 'reactstrap';
+import ToDoItem from '../components/todoitem';
 
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
@@ -20,10 +20,20 @@ export default class Dashboard extends Component {
       .then( res => res.json() )
       .then( json => this.setState({ data: json }) )
   }
-
+  renderNotes = () => {
+    console.log(this.state.data);
+    return Array.from(this.state.data).map((datum,index) =>
+              <ToDoItem key={index} datum={datum}/>)
+  }
   render(){
     return (
-      <Button>Dashboard: {this.state.data}</Button>
+      <FormGroup>
+        <Label for="exampleSelectMulti">Select Multiple</Label>
+        <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
+          {this.renderNotes()}
+        </Input>
+      </FormGroup>
+      // <Button>Dashboard: {this.state.data}</Button>
     )
   }
 }
