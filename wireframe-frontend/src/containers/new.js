@@ -7,10 +7,16 @@ export default class New extends Component {
   constructor(props){
     super()
   }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.history.push('/dashboard')
+  }
+
   render(){
     return (
       <div className="mt-5">
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Container>
             <Row>
               <Col>
