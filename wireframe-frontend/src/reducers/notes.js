@@ -3,8 +3,8 @@ const NotesReducer = (state={data: []},action) => {
     case 'notes':
       return Object.assign({},state,{data: action.payload})
     default:
-      return state;
+      return state
   }
 }
 
-export default NotesReducer;
+export default NotesReducer
