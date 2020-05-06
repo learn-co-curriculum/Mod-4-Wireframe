@@ -1,16 +1,37 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Button, Form, Label, Input, FormGroup, Row, Col, Card } from 'reactstrap';
+import { connect } from 'react-redux'
+import UsersAction from '../actions/users'
 
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
 
-export default class Login extends Component {
+ const mapDispatchToProps = dispatch => {
+   return {
+     logIn: user => {
+       dispatch(UsersAction(user))
+     }
+   }
+ }
+
+class Login extends Component {
   constructor(props){
     super()
   }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.logIn(event.target.username.value)
+  }
+
   render(){
     return (
       <div className="mt-5">
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Row className="justify-content-center">
               <Col>
@@ -26,3 +47,5 @@ export default class Login extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login)

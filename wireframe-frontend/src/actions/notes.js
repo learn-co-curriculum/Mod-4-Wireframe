@@ -1,7 +1,7 @@
 const NotesAction = data => {
   return {
     type: 'notes',
-    payload: data
+    notes: data
     }
 }
 

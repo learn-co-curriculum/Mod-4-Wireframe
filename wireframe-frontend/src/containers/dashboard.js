@@ -34,9 +34,12 @@ class Dashboard extends Component {
     const url = runtimeEnv().REACT_APP_API_URL
     fetch(url)
       .then( res => res.json() )
-      .then( json => this.props.load(json) )
+      .then( json => {
+        console.log(json)
+        this.props.load(json)} )
   }
   render(){
+    console.log(Array.from(this.props))
     return (
       <div>
       <Container>

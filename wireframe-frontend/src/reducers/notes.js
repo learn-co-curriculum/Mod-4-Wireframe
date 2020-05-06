@@ -1,7 +1,7 @@
 const NotesReducer = (state=[],action) => {
   switch(action.type){
     case 'notes':
-      return Object.assign({},state,{data: action.payload})
+      return action.notes
     default:
       return state
   }
