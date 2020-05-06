@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Button } from 'reactstrap';
+import { Button, Form, Label, Input } from 'reactstrap';
 
 
 export default class Login extends Component {
@@ -9,7 +9,11 @@ export default class Login extends Component {
   }
   render(){
     return (
-      <Button>Login</Button>
+      <Form>
+        <Label for="username">Username</Label>
+        <Input type="text" name="username" id="username" placeholder="username" />
+        <Button>Login</Button>
+      </Form>
     )
   }
 }
