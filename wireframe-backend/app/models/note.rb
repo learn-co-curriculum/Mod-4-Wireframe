@@ -9,7 +9,7 @@ class Note < ApplicationRecord
   end
 
   def add_tag(tag)
-    TagNote.create(note: self.id ,tag: tag.id)
+    Tagnote.create(note_id: self.id ,tag_id: tag.id)
   end
 
   def add_tags(tags)

@@ -7,18 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Note.destroy_all
 Tag.destroy_all
-TagNote.destroy_all
+Tagnote.destroy_all
 User.destroy_all
 
 users = ['RandomPerson1','RandomPerson2']
 User1 = User.create(username: users[0])
 User2 = User.create(username: users[1])
 
+tags = ['coding','frontend','backend','javascript','ruby','rails','html','css','react','redux']
+
 Tags = tags.map do |tag|
   Tag.create(name: tag)
 end
 
-tags = ['backend','frontend','javascript','ruby','rails','html','css','react','redux','coding']
+
 descriptions = [
   "JavaScript, often abbreviated as JS,
   is a programming language that conforms
@@ -64,9 +66,28 @@ titles = ['JavaScript Intro','JavaScript Details',
     'Ruby on Rails Details','HTML Summary',"CSS Summary",'React Summary',
     'Redux Summary']
 
- (0..5).each do |n|
-   Note.create_with_user(title: titles[n],description: descriptions[n],User1)
+ (0...5).each do |n|
+   Note.create_with_user(titles[n],descriptions[n],User1)
  end
- (5..10).each do |n|
-   Note.create_with_user(title: titles[n],description: descriptions[n],User2)
+ (5...10).each do |n|
+   Note.create_with_user(titles[n],descriptions[n],User2)
+ end
+
+ tagarrays = [
+   [Tags[0],Tags[1],Tags[3]],
+   [Tags[0],Tags[1],Tags[3]],
+   [Tags[0],Tags[1],Tags[4]],
+   [Tags[0],Tags[1],Tags[4]],
+   [Tags[0],Tags[2],Tags[5]],
+   [Tags[0],Tags[2],Tags[5]],
+   [Tags[0],Tags[2],Tags[6]],
+   [Tags[0],Tags[2],Tags[7]],
+   [Tags[0],Tags[2],Tags[8]],
+   [Tags[0],Tags[2],Tags[9]]
+ ]
+
+ NoteArray = Note.all.to_a
+
+ (0...10).each do |n|
+   NoteArray[n].add_tags(tagarrays[n])
  end
