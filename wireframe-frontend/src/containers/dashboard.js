@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css'
-import { FormGroup, Label, Input } from 'reactstrap'
+import { FormGroup, Label, Input, Row, Col, Container } from 'reactstrap'
 import Note from '../components/note'
 import { connect } from 'react-redux'
 import NotesAction from '../actions/notes'
@@ -42,12 +42,23 @@ class Dashboard extends Component {
   }
   render(){
     return (
+      <div>
+      <Container>
+      <Row>
+      <Col>
       <FormGroup>
         <Label for="exampleSelectMulti">Select Multiple</Label>
         <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
           {this.renderNotes()}
         </Input>
       </FormGroup>
+      </Col>
+      <Col>
+      Right Side
+      </Col>
+      </Row>
+      </Container>
+      </div>
     )
   }
 }
