@@ -1,4 +1,4 @@
-const NotesReducer = (state={data: []},action) => {
+const NotesReducer = (state=[],action) => {
   switch(action.type){
     case 'notes':
       return Object.assign({},state,{data: action.payload})

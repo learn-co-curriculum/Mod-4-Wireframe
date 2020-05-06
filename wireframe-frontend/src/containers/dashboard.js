@@ -9,8 +9,9 @@ import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
-    data: state.data
+    data: state.notes
   }
 }
 
