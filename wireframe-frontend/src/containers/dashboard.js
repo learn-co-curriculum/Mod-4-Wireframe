@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import '../App.css'
 import { FormGroup, Label, Input, Row, Col, Container } from 'reactstrap'
-import Note from '../components/note'
+// import Note from '../components/note'
+import Notes from '../components/notes'
 import { connect } from 'react-redux'
 import NotesAction from '../actions/notes'
 import fetch from 'isomorphic-fetch'
@@ -34,24 +35,13 @@ class Dashboard extends Component {
       .then( res => res.json() )
       .then( json => this.props.load(json) )
   }
-  // this.setState({ data: json })
-  renderNotes = () => {
-    console.log(this.props);
-    return Array.from(this.props.data).map((datum,index) =>
-              <Note key={index} datum={datum}/>)
-  }
   render(){
     return (
       <div>
       <Container>
       <Row>
       <Col>
-      <FormGroup>
-        <Label for="exampleSelectMulti">Select Multiple</Label>
-        <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
-          {this.renderNotes()}
-        </Input>
-      </FormGroup>
+      <Notes data = {this.props.data} />
       </Col>
       <Col>
       Right Side
