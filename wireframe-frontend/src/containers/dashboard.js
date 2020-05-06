@@ -1,13 +1,27 @@
-import React, { Component } from 'react';
-import '../App.css';
-import { FormGroup, Label, Input } from 'reactstrap';
-import ToDoItem from '../components/todoitem';
-
+import React, { Component } from 'react'
+import '../App.css'
+import { FormGroup, Label, Input } from 'reactstrap'
+import Note from '../components/note'
+import { connect } from 'react-redux'
+import NotesAction from '../actions/notes'
 import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 
-export default class Dashboard extends Component {
-  constructor() {
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+ const mapDispatchToProps = dispatch => {
+   return {
+     load: data => {
+       dispatch(NotesAction(data))
+     }
+   }
+ }
+class Dashboard extends Component {
+  constructor(props) {
     super()
     this.state = {
       data: ""
@@ -15,15 +29,18 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.data)
+    console.log(this.props.load)
     const url = runtimeEnv().REACT_APP_API_URL
     fetch(url)
       .then( res => res.json() )
-      .then( json => this.setState({ data: json }) )
+      .then( json => this.props.load(json) )
   }
+  // this.setState({ data: json })
   renderNotes = () => {
-    console.log(this.state.data);
-    return Array.from(this.state.data).map((datum,index) =>
-              <ToDoItem key={index} datum={datum}/>)
+    console.log(this.props.data);
+    return Array.from(this.props.data).map((datum,index) =>
+              <Note key={index} datum={datum}/>)
   }
   render(){
     return (
@@ -33,7 +50,8 @@ export default class Dashboard extends Component {
           {this.renderNotes()}
         </Input>
       </FormGroup>
-      // <Button>Dashboard: {this.state.data}</Button>
     )
   }
 }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Dashboard)
