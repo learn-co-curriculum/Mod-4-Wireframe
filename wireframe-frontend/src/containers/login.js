@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Button, Form, Label, Input } from 'reactstrap';
+import { Button, Form, Label, Input, FormGroup, Row, Col } from 'reactstrap';
 
 
 export default class Login extends Component {
@@ -10,9 +10,16 @@ export default class Login extends Component {
   render(){
     return (
       <Form>
-        <Label for="username">Username</Label>
-        <Input type="text" name="username" id="username" placeholder="username" />
-        <Button>Login</Button>
+        <FormGroup>
+          <Row className="justify-content-center">
+            <Col>
+              <Input type="text" name="username" id="username" placeholder="username" />
+            </Col>
+            <Col>
+              <Button>Login</Button>
+            </Col>
+          </Row>
+        </FormGroup>
       </Form>
     )
   }
