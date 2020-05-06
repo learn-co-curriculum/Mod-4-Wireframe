@@ -32,6 +32,7 @@ class App extends Component {
         <Route exact path = '/' component = { Login } />
         <Route exact path = '/dashboard' component = { Dashboard } />
         <Route exact path = '/note/new' component = { New } />
+        <Route exact path = '/note/:id' component = { Show } />
         <Route exact path = '/edit' component = { Edit } />
         <Route exact path = '/show' component = { Show } />
     </Switch>
