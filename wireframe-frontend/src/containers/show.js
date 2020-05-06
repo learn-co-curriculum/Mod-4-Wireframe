@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
-import '../App.css';
-import { Button } from 'reactstrap';
+import React, { Component } from 'react'
+import { useParams } from 'react-router-dom'
+import '../App.css'
+import { Button } from 'reactstrap'
 
 
-export default class Show extends Component {
-  constructor(props){
-    super()
-  }
-  render(){
-    return (
-      <Button>Show</Button>
-    )
-  }
+const Show = props => {
+console.log(props)
+return <Button>ID:{props.match.params.id}</Button>
 }
+export default Show

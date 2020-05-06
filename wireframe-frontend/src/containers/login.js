@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Button } from 'reactstrap';
+import { Button, Form, Label, Input, FormGroup, Row, Col, Card } from 'reactstrap';
 
 
 export default class Login extends Component {
@@ -9,7 +9,20 @@ export default class Login extends Component {
   }
   render(){
     return (
-      <Button>Login</Button>
+      <div className="mt-5">
+        <Form>
+          <FormGroup>
+            <Row className="justify-content-center">
+              <Col>
+                <Input type="text" name="username" id="username" placeholder="username" />
+                </Col>
+                <Col>
+                <Button>Login</Button>
+                </Col>
+              </Row>
+            </FormGroup>
+          </Form>
+        </div>
     )
   }
 }
