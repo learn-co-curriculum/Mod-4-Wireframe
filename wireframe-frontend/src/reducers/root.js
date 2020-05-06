@@ -1,6 +1,7 @@
-import NotesReducer from 'notes.js'
-import UsersReducer from 'users.js'
+import { combineReducers } from 'redux'
+import NotesReducer from './notes'
+import UsersReducer from './users'
 
-const RootReducer = combineReducers({NotesReducer: NotesReducer,UsersReducer: UsersReducer })
+const RootReducer = combineReducers({NotesReducer, UsersReducer })
 
 export default RootReducer

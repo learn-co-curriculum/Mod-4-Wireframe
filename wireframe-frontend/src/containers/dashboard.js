@@ -29,8 +29,6 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.data)
-    console.log(this.props.load)
     const url = runtimeEnv().REACT_APP_API_URL
     fetch(url)
       .then( res => res.json() )
@@ -38,7 +36,7 @@ class Dashboard extends Component {
   }
   // this.setState({ data: json })
   renderNotes = () => {
-    console.log(this.props.data);
+    console.log(this.props);
     return Array.from(this.props.data).map((datum,index) =>
               <Note key={index} datum={datum}/>)
   }
