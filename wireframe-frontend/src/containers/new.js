@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Button } from 'reactstrap';
+import { Button, Container, Row, Form, Col, Label, Input} from 'reactstrap';
 
 
 export default class New extends Component {
@@ -9,7 +9,38 @@ export default class New extends Component {
   }
   render(){
     return (
-      <Button>New</Button>
+      <div className="mt-5">
+        <Form>
+          <Container>
+            <Row>
+              <Col>
+                <Label>Title</Label>
+              </Col>
+              <Col>
+                <Input type="text" id="title" />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Label>Notes</Label>
+              </Col>
+              <Col>
+                <Input type="text" id="notes" />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+              </Col>
+              <Col>
+                <Button type="submit">SAVE</Button>
+              </Col>
+            </Row>
+
+          </Container>
+        </Form>
+
+      </div>
+
     )
   }
 }
