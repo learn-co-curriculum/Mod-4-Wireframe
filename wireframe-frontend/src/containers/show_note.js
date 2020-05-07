@@ -27,7 +27,10 @@ class ShowNote extends Component {
   constructor(props){
     super()
     this.state ={
-      view: true
+      view: true,
+      title: '',
+      description: '',
+      tags: []
     }
   }
   componentDidMount(){
@@ -35,7 +38,10 @@ class ShowNote extends Component {
       fetch(`${url}/notes/${this.props.id}`)
         .then(res => res.json())
         .then(json => {
-
+          console.log('json',json)
+          this.setState({title: json.title,
+                        description: json.description,
+                        tags: json.tags})
           this.props.load(json)
         })
   }
@@ -51,8 +57,8 @@ class ShowNote extends Component {
     }
     else {
       console.log(this.props.note)
-      return <EditNote title={this.props.note.title} description={this.props.note.description}
-        tags={this.props.note.tags} handleEdit={this.handleEdit} />
+      return <EditNote title={this.state.title} description={this.state.description}
+        tags={this.state.tags} handleEdit={this.handleEdit} />
     }
   }
   render(){
