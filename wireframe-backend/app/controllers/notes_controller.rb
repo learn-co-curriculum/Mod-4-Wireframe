@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class NotesController < ApplicationController
   def index
     render json: Note.all
   end

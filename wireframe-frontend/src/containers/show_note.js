@@ -35,7 +35,6 @@ class ShowNote extends Component {
       fetch(`${url}/notes/${this.props.id}`)
         .then(res => res.json())
         .then(json => {
-          console.log(json)
           this.props.load(json)
         })
   }

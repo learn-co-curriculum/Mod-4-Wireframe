@@ -28,6 +28,9 @@ class Dashboard extends Component {
       data: ""
     }
   }
+  handleClick = id => {
+    this.props.history.push(`/note/${id}`)
+  }
 
   componentDidMount() {
     const url = runtimeEnv().REACT_APP_API_URL
@@ -39,7 +42,6 @@ class Dashboard extends Component {
       fetch(`${url}/notes/${this.props.match.params.id}`)
         .then(res => res.json())
         .then(json => {
-          console.log(json)
           this.setState({data: json})
         })
   }
@@ -49,7 +51,7 @@ class Dashboard extends Component {
       <Container>
       <Row>
       <Col>
-      <Notes data = {this.props.data} />
+      <Notes data = {this.props.data} handleClick={this.handleClick} />
       </Col>
       <Col>
         <ShowNote id={this.props.match.params.id}/>

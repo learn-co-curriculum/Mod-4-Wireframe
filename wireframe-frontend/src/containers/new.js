@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Button, Container, Row, Form, Col, Label, Input} from 'reactstrap';
-
+import fetch from 'isomorphic-fetch'
+import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 export default class New extends Component {
   constructor(props){
@@ -10,7 +11,26 @@ export default class New extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.history.push('/dashboard')
+
+    const bodyObject = {
+                        title: event.target.title.value,
+                        description: event.target.description.value
+                        }
+    const url = runtimeEnv().REACT_APP_API_URL
+    const reqObj = {
+      method: "POST",
+       headers: {
+         "Content-Type":"application/json",
+         "Accept":"application/json"
+       },
+       body:JSON.stringify(bodyObject)
+     }
+     fetch(`${url}/notes`, reqObj)
+       .then( res => res.json() )
+       .then( data => {
+         console.log(data)} )
+
+    // this.props.history.push('/dashboard')
   }
 
   render(){
@@ -23,7 +43,7 @@ export default class New extends Component {
                 <Label>Title</Label>
               </Col>
               <Col>
-                <Input type="text" id="title" />
+                <Input type="text" id="title" name="title" />
               </Col>
             </Row>
             <Row>
@@ -31,7 +51,7 @@ export default class New extends Component {
                 <Label>Notes</Label>
               </Col>
               <Col>
-                <Input type="text" id="notes" />
+                <Input type="text" id="notes" name="description" />
               </Col>
             </Row>
             <Row>

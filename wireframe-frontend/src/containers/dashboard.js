@@ -9,7 +9,6 @@ import fetch from 'isomorphic-fetch'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     data: state.notes
   }
@@ -30,9 +29,12 @@ class Dashboard extends Component {
     }
   }
 
+  handleClick = id => {
+    this.props.history.push(`/note/${id}`)
+  }
   componentDidMount() {
     const url = runtimeEnv().REACT_APP_API_URL
-    fetch(url)
+    fetch(`${url}/notes`)
       .then( res => res.json() )
       .then( json => {
         this.props.load(json)} )
@@ -43,7 +45,7 @@ class Dashboard extends Component {
       <Container>
       <Row>
       <Col>
-      <Notes data = {this.props.data} />
+      <Notes data = {this.props.data} handleClick={this.handleClick}/>
       </Col>
       <Col>
       Right Side
