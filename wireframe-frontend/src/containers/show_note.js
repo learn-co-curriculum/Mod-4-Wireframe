@@ -5,6 +5,7 @@ import NoteAction from '../actions/note'
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 import { connect } from 'react-redux'
 import { Container, Row, Button} from 'reactstrap'
+import ViewNote from '../components/view_note'
 
 
 const mapStateToProps = state => {
