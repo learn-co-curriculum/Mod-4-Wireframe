@@ -6,6 +6,7 @@ import runtimeEnv from '@mars/heroku-js-runtime-env'
 import { connect } from 'react-redux'
 import { Container, Row, Button} from 'reactstrap'
 import ViewNote from '../components/view_note'
+import EditNote from '../components/edit_note'
 
 
 const mapStateToProps = state => {
@@ -25,6 +26,9 @@ const mapStateToProps = state => {
 class ShowNote extends Component {
   constructor(props){
     super()
+    this.state ={
+      view: true
+    }
   }
   componentDidMount(){
     const url = runtimeEnv().REACT_APP_API_URL
@@ -35,24 +39,23 @@ class ShowNote extends Component {
           this.props.load(json)
         })
   }
-  render(){
-    return (
-      <Container>
-        <Row>
-          <div>{this.props.note.title}</div>
-          <br />
-          <br />
-        </Row>
-        <Row>
-          <div>{this.props.note.description}</div>
-        </Row>
-        <Row>
-          <Button>Edit</Button>
-          <Button>Delete</Button>
-        </Row>
-      </Container>
 
-    )
+  handleEdit = () => {
+    this.setState({view: !this.state.view})
+  }
+
+  renderView = () => {
+    if(this.state.view){
+      return <ViewNote title={this.props.note.title} description={this.props.note.description}
+        handleEdit={this.handleEdit} />
+    }
+    else {
+      return <EditNote title={this.props.note.title} description={this.props.note.description}
+        handleEdit={this.handleEdit} />
+    }
+  }
+  render(){
+    return (this.renderView())
   }
 }
 

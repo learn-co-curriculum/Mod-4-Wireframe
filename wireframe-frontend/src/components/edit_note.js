@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Container, Row, Button} from 'reactstrap'
+import { Container, Row, Button, Form} from 'reactstrap'
 
 
 
 
-const ViewNote = props => <Container>
+const EditNote = props =>
+        <Form><Container>
                         <Row>
-                          <div>{this.props.note.title}</div>
+                          <div>{props.title}</div>
                             <br />
                               <br />
                         </Row>
                         <Row>
-                          <div>{this.props.note.description}</div>
+                          <div>{props.description}</div>
                         </Row>
                         <Row>
                           <Button>SAVE</Button>
                         </Row>
                       </Container>
+                      </Form>
+
+export default EditNote

@@ -7,15 +7,18 @@ import { Container, Row, Button} from 'reactstrap'
 
 const ViewNote = props => <Container>
                         <Row>
-                          <div>{this.props.note.title}</div>
+                          <div>{props.title}</div>
                             <br />
                               <br />
                         </Row>
                         <Row>
-                          <div>{this.props.note.description}</div>
+                          <div>{props.description}</div>
                         </Row>
                         <Row>
-                          <Button>Edit</Button>
+                          <Button onClick={props.handleEdit}>Edit</Button>
                           <Button>Delete</Button>
                         </Row>
                       </Container>
+
+
+export default ViewNote
