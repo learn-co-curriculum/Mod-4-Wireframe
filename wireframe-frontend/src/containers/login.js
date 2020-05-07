@@ -25,6 +25,10 @@ class Login extends Component {
     super()
   }
 
+  componentDidMount(){
+    this.props.logIn('')
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     const url = runtimeEnv().REACT_APP_API_URL

@@ -14,7 +14,7 @@ export default class NavBar extends Component {
           <Button>FlatNote</Button>
           <Button color="info"><Link to='/dashboard'>Dashboard</Link></Button>
           <Button color="info"><Link to='/note/new'>New Note</Link></Button>
-          <Button color="info"><Link to='/logout'>Sign Out</Link></Button>
+          <Button color="info"><Link to='/'>Sign Out</Link></Button>
        </ButtonGroup>
 
 
