@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Container, Row, Button, Form} from 'reactstrap'
+import { Container, Row, Button, Form, Input} from 'reactstrap'
 
 
 
@@ -8,12 +8,18 @@ import { Container, Row, Button, Form} from 'reactstrap'
 const EditNote = props =>
         <Form><Container>
                         <Row>
-                          <div>{props.title}</div>
+                          <label>Title:</label>
+                          <Input value={props.title}/>
                             <br />
                               <br />
                         </Row>
                         <Row>
-                          <div>{props.description}</div>
+                          <label>Description:</label>
+                          <Input value={props.description} />
+                        </Row>
+                        <Row>
+                          <label>Tags:</label>
+                          <Input value={Array.from(props.tags).map(tag => tag.name)}/>
                         </Row>
                         <Row>
                           <Button>SAVE</Button>

@@ -5,12 +5,10 @@ class NotesController < ApplicationController
   end
   def show
     note = Note.find_by(id: params[:id])
-    render json: note
+    render json: note,methods: :tags
   end
   def create
     render json:Note.all
-    # Note.create({title: params[:title],description: params[:description], user_id: 19})
-    puts '===========create======'
   end
 
   # def destroy

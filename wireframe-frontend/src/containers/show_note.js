@@ -35,6 +35,7 @@ class ShowNote extends Component {
       fetch(`${url}/notes/${this.props.id}`)
         .then(res => res.json())
         .then(json => {
+
           this.props.load(json)
         })
   }
@@ -49,8 +50,9 @@ class ShowNote extends Component {
         handleEdit={this.handleEdit} />
     }
     else {
+      console.log(this.props.note)
       return <EditNote title={this.props.note.title} description={this.props.note.description}
-        handleEdit={this.handleEdit} />
+        tags={this.props.note.tags} handleEdit={this.handleEdit} />
     }
   }
   render(){
