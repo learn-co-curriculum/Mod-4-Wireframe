@@ -46,6 +46,10 @@ class ShowNote extends Component {
         })
   }
 
+  handleChange = event => {
+    console.log(event.target)
+  }
+
   handleEdit = () => {
     this.setState({view: !this.state.view})
   }
@@ -56,9 +60,8 @@ class ShowNote extends Component {
         handleEdit={this.handleEdit} />
     }
     else {
-      console.log(this.props.note)
       return <EditNote title={this.state.title} description={this.state.description}
-        tags={this.state.tags} handleEdit={this.handleEdit} />
+        tags={this.state.tags} handleEdit={this.handleEdit} handleChange={this.handleChange} />
     }
   }
   render(){
