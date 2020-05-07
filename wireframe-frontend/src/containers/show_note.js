@@ -38,7 +38,6 @@ class ShowNote extends Component {
       fetch(`${url}/notes/${this.props.id}`)
         .then(res => res.json())
         .then(json => {
-          console.log('json',json)
           this.setState({title: json.title,
                         description: json.description,
                         tags: json.tags})
@@ -55,7 +54,6 @@ class ShowNote extends Component {
   }
 
   handleDelete = () => {
-    console.log(this.props)
     const url = runtimeEnv().REACT_APP_API_URL
       fetch(`${url}/notes/${this.props.id}`,{method:'DELETE'})
         .then(resp => resp.json())

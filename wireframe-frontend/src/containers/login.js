@@ -23,30 +23,57 @@ const mapStateToProps = state => {
 class Login extends Component {
   constructor(props){
     super()
+    this.state = {
+      userMessage: ''
+    }
   }
 
   componentDidMount(){
     this.props.logIn('')
   }
 
+  findUser = (username, data) => {
+    let arr = Array.from(data);
+    let userobj = arr.find(elem => elem.username === username)
+    if(userobj){
+      return userobj
+    }
+    else {
+      return null
+    }
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     const url = runtimeEnv().REACT_APP_API_URL
-    const configObj = {
-      method:'POST',
-      headers: {
-        "Content-Type":"application/json",
-        "Accept":"application/json"
-      },
-      body: JSON.stringify({username: event.target.username.value})
-    }
+    const username = event.target.username.value
+    fetch(`${url}/users`)
+      .then(resp => resp.json())
+      .then(data =>{
+                    const founduser = this.findUser(username, data)
+                    if(founduser){
+                      this.setState({userMessage: `Greetings ${founduser.username}`})
+                    }
+                    else {
+                      this.setState({userMessage: 'Sorry user not found'})
+                    }
+                  })
 
-    fetch(`${url}/users`,configObj)
-      .then( res => res.json() )
-      .then( json => {
-        console.log(json)} )
+    // const configObj = {
+    //   method:'POST',
+    //   headers: {
+    //     "Content-Type":"application/json",
+    //     "Accept":"application/json"
+    //   },
+    //   body: JSON.stringify({username: event.target.username.value})
+    // }
+    //
+    // fetch(`${url}/users`,configObj)
+    //   .then( res => res.json() )
+    //   .then( json => {
+    //     console.log(json)} )
 
-    this.props.logIn(event.target.username.value)
+    this.props.logIn(username)
 
   }
 
@@ -65,6 +92,7 @@ class Login extends Component {
               </Row>
             </FormGroup>
           </Form>
+          <Row>{this.state.userMessage}</Row>
         </div>
     )
   }

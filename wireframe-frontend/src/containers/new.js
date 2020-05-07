@@ -27,8 +27,6 @@ export default class New extends Component {
        body:JSON.stringify(bodyObject)
 
      }
-     console.log(url)
-     console.log(reqObj)
      fetch(`${url}/notes`, reqObj)
        .then( res => res.json() )
        .then( data => {
