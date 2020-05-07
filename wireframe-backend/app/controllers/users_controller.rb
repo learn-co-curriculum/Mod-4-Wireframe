@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    user = User.find_by(username: params[:username])
+    render json: user, methods: :user_notes
     # user = User.find_by(username: params[:username])
     # if(user)
     #   render json: user

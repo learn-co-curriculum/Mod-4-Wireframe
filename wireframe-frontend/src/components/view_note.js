@@ -16,7 +16,7 @@ const ViewNote = props => <Container>
                         </Row>
                         <Row>
                           <Button onClick={props.handleEdit}>Edit</Button>
-                          <Button>Delete</Button>
+                          <Button onClick={props.handleDelete}>Delete</Button>
                         </Row>
                       </Container>
 

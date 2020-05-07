@@ -54,10 +54,18 @@ class ShowNote extends Component {
     this.setState({view: !this.state.view})
   }
 
+  handleDelete = () => {
+    console.log(this.props)
+    const url = runtimeEnv().REACT_APP_API_URL
+      fetch(`${url}/notes/${this.props.id}`,{method:'DELETE'})
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+  }
+
   renderView = () => {
     if(this.state.view){
       return <ViewNote title={this.props.note.title} description={this.props.note.description}
-        handleEdit={this.handleEdit} />
+        handleEdit={this.handleEdit} handleDelete={this.handleDelete} />
     }
     else {
       return <EditNote title={this.state.title} description={this.state.description}
