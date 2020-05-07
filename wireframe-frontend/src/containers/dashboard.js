@@ -35,11 +35,9 @@ class Dashboard extends Component {
     fetch(url)
       .then( res => res.json() )
       .then( json => {
-        console.log(json)
         this.props.load(json)} )
   }
   render(){
-    console.log(Array.from(this.props))
     return (
       <div>
       <Container>

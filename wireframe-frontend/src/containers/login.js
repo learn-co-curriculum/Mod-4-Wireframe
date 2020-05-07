@@ -3,6 +3,8 @@ import '../App.css';
 import { Button, Form, Label, Input, FormGroup, Row, Col, Card } from 'reactstrap';
 import { connect } from 'react-redux'
 import UsersAction from '../actions/users'
+import fetch from 'isomorphic-fetch'
+import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 const mapStateToProps = state => {
   return {
@@ -25,7 +27,23 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const url = runtimeEnv().REACT_APP_API_URL
+    const configObj = {
+      method:'POST',
+      headers: {
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      },
+      body: JSON.stringify({username: event.target.username.value})
+    }
+
+    fetch(`${url}/users`,configObj)
+      .then( res => res.json() )
+      .then( json => {
+        console.log(json)} )
+
     this.props.logIn(event.target.username.value)
+
   }
 
   render(){

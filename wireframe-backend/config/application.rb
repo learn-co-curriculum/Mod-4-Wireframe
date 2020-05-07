@@ -14,7 +14,7 @@ module WireframeBackend
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'http://localhost:3000', 'https://arcane-journey-88268.herokuapp.com/' #replace this url with that of your own heroku client app
-        resource '*', :headers => :any, :methods => [:get]
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :patch]
       end
     end
 

@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :username, :user_notes
+  attributes :id, :username, :user_notes
   def user_notes
     self.object.notes
   end
