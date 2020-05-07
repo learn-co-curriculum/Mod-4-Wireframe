@@ -14,7 +14,8 @@ export default class New extends Component {
 
     const bodyObject = {
                         title: event.target.title.value,
-                        description: event.target.description.value
+                        description: event.target.description.value,
+                        user_id: 19
                         }
     const url = runtimeEnv().REACT_APP_API_URL
     const reqObj = {
@@ -24,7 +25,10 @@ export default class New extends Component {
          "Accept":"application/json"
        },
        body:JSON.stringify(bodyObject)
+
      }
+     console.log(url)
+     console.log(reqObj)
      fetch(`${url}/notes`, reqObj)
        .then( res => res.json() )
        .then( data => {
