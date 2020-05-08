@@ -49,7 +49,7 @@ class ShowNote extends Component {
     this.getNote()
   }
 
-  componentWillUpdate(){
+  componentWillReceiveProps(){
     this.getNote()
   }
 
