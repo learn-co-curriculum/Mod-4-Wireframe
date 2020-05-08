@@ -53,6 +53,7 @@ class Login extends Component {
                     const founduser = this.findUser(username, data)
                     if(founduser){
                       this.setState({userMessage: `Greetings ${founduser.username}`})
+                      this.props.logIn(founduser)
                     }
                     else {
                       this.setState({userMessage: 'Sorry user not found'})
@@ -73,7 +74,7 @@ class Login extends Component {
     //   .then( json => {
     //     console.log(json)} )
 
-    this.props.logIn(username)
+
 
   }
 
