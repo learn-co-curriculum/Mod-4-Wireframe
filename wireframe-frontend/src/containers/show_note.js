@@ -33,7 +33,8 @@ class ShowNote extends Component {
       tags: []
     }
   }
-  componentDidMount(){
+
+  getNote = () => {
     const url = runtimeEnv().REACT_APP_API_URL
       fetch(`${url}/notes/${this.props.id}`)
         .then(res => res.json())
@@ -43,6 +44,13 @@ class ShowNote extends Component {
                         tags: json.tags})
           this.props.load(json)
         })
+  }
+  componentDidMount(){
+    this.getNote()
+  }
+
+  componentWillUpdate(){
+    this.getNote()
   }
 
   handleChange = event => {
