@@ -43,6 +43,7 @@ class ShowNote extends Component {
                         description: json.description,
                         tags: json.tags})
           this.props.load(json)
+
         })
   }
   componentDidMount(){
@@ -54,7 +55,7 @@ class ShowNote extends Component {
   }
 
   handleChange = event => {
-    console.log(event.target)
+    this.setState({[event.target.name]: event.target.value})
   }
 
   handleEdit = () => {
@@ -74,8 +75,8 @@ class ShowNote extends Component {
         handleEdit={this.handleEdit} handleDelete={this.handleDelete} />
     }
     else {
-      return <EditNote title={this.state.title} description={this.state.description}
-        tags={this.state.tags} handleEdit={this.handleEdit} handleChange={this.handleChange} />
+      return <EditNote title={this.props.note.title} description={this.props.note.description}
+        tags={this.props.note.tags} handleEdit={this.handleEdit} handleChange={this.handleChange} />
     }
   }
   render(){
