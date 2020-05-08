@@ -41,7 +41,7 @@ class ShowNote extends Component {
         .then(json => {
           this.setState({title: json.title,
                         description: json.description,
-                        tags: json.tags})
+                        tags: Array.from(json.tags).map(tag => tag.name).join(',')})
           this.props.load(json)
 
         })
@@ -55,7 +55,8 @@ class ShowNote extends Component {
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({[event.target.name]:event.target.value})
+    // this.props.load(Object.assign({},this.props.note, {[event.target.name]: event.target.value}))
   }
 
   handleEdit = () => {
@@ -71,12 +72,12 @@ class ShowNote extends Component {
 
   renderView = () => {
     if(this.state.view){
-      return <ViewNote title={this.props.note.title} description={this.props.note.description}
+      return <ViewNote title={this.state.title} description={this.state.description}
         handleEdit={this.handleEdit} handleDelete={this.handleDelete} />
     }
     else {
-      return <EditNote title={this.props.note.title} description={this.props.note.description}
-        tags={this.props.note.tags} handleEdit={this.handleEdit} handleChange={this.handleChange} />
+      return <EditNote title={this.state.title} description={this.state.description}
+        tags={this.state.tags} handleEdit={this.handleEdit} handleChange={this.handleChange} />
     }
   }
   render(){

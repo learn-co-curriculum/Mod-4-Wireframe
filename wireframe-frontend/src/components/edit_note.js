@@ -19,7 +19,7 @@ const EditNote = props =>
                         </Row>
                         <Row>
                           <label>Tags:</label>
-                          <Input value={Array.from(props.tags).map(tag => tag.name)} name="tags" onChange={props.handleChange}/>
+                          <Input value={props.tags} name="tags" onChange={props.handleChange}/>
                         </Row>
                         <Row>
                           <Button>SAVE</Button>
